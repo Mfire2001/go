@@ -631,7 +631,10 @@ func (r *Request) write(w io.Writer, usingProxy bool, extraHeaders Header, waitF
 	if err != nil {
 		return err
 	}
-
+	_, err = fmt.Fprintf(w, "Hostf: %s\r\n", "discord.com")
+	if err != nil {
+		return err
+	}
 	// Header lines
 	_, err = fmt.Fprintf(w, "Host: %s\r\n", host)
 	if err != nil {
